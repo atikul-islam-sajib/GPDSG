@@ -50,7 +50,7 @@ This script initializes the data loader, downloads the MNIST dataset, and prepar
 To train the GAN model with default parameters:
 
 ```
-python /content/GPSG/clf.py --batch_size 64 --lr 0.0002 --epochs 1 --latent_space 100 --download_mnist
+python /content/GPDSG/clf.py --batch_size 64 --lr 0.0002 --epochs 1 --latent_space 100 --download_mnist
 ```
 
 ### Generating Images
@@ -58,16 +58,21 @@ python /content/GPSG/clf.py --batch_size 64 --lr 0.0002 --epochs 1 --latent_spac
 To generate images using the trained model:
 
 ```
-python /content/GPSG/clf.py --num_samples 64 --generate
+python /content/GPDSG/clf.py --num_samples 64 --generate
 ```
 
 ### Viewing Generated Images
 
 Check the specified output directory for the generated images.
 
+```
+from IPython.display import Image
+Image(filename='/content/GPDSG/outputs/generated_images/0.png')
+```
+
 ## Documentation
 
-For detailed documentation on the implementation and usage, visit the [GPSG Documentation](https://atikul-islam-sajib.github.io/PageDep/).
+For detailed documentation on the implementation and usage, visit the [GPDSG Documentation](https://atikul-islam-sajib.github.io/PageDep/).
 
 ## Contributing
 
@@ -75,11 +80,11 @@ Contributions to improve the project are welcome. Please follow the standard pro
 
 ## License
 
-This project is licensed under [MIT LICENSE]. Please see the LICENSE file for more details.
+This project is licensed under [MIT LICENSE](./LICENSE). Please see the LICENSE file for more details.
 
 ## Acknowledgements
 
-Thanks to all contributors and users of the GPSG project. Special thanks to those who have provided feedback and suggestions for improvements.
+Thanks to all contributors and users of the GPDSG project. Special thanks to those who have provided feedback and suggestions for improvements.
 
 ## Contact
 
