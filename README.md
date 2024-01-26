@@ -1,4 +1,4 @@
-![DCGAN](/Users/shahmuhammadraditrahman/Desktop/GPDSG/outputs/generated_image.png)
+![DCGAN](./outputs/generated_image.png)
 
 # GPSG - Generative Adversarial Network for MNIST Dataset: DCGAN
 
