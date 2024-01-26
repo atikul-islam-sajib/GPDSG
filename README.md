@@ -82,7 +82,7 @@ Image(filename='/content/GPDSG/outputs/generated_image.png')
 
 ## Documentation
 
-For detailed documentation on the implementation and usage, visit the [GPDSG Documentation](https://atikul-islam-sajib.github.io/PageDep/).
+For detailed documentation on the implementation and usage, visit the [GPDSG Documentation](https://atikul-islam-sajib.github.io/GPDSG-deploy/).
 
 ## Contributing
 
