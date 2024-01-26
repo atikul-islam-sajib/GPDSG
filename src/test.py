@@ -60,9 +60,13 @@ def get_best_model():
         - It is assumed that the model files are stored as separate files within this directory.
         - Ensure that the naming convention of the model files reflects their chronological order.
     """
-    checkpoint_path = "./models/checkpoints/"
-    best_model = os.path.append(
-        checkpoint_path, str(len(os.listdir(checkpoint_path)) - 1)
+    checkpoint_path = "./models/checkpoints"
+    best_model = (
+        checkpoint_path
+        + "/"
+        + "generator_"
+        + str(len(os.listdir(checkpoint_path)) - 1)
+        + ".pth"
     )
     return best_model
 
