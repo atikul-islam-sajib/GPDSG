@@ -1,1 +1,2 @@
-2024-01-26 18:03:16,464 - root - INFO - Total parameters of Generator # 1066752 
+2024-01-26 18:15:18,574 - root - ERROR - Generator model is not defined
+NoneType: None

@@ -50,41 +50,24 @@ class Generator(nn.Module):
         self.latent_space = latent_space
         self.model = nn.Sequential(
             nn.ConvTranspose2d(
-                in_channels=self.latent_space,
-                out_channels=256,
-                kernel_size=4,
-                stride=1,
-                padding=0,
-                bias=False,
+                in_channels=self.latent_space, out_channels=256, kernel_size=4, stride=1, padding=0, bias=False,
             ),
             nn.BatchNorm2d(256),
             nn.ReLU(),
+
             nn.ConvTranspose2d(
-                in_channels=256,
-                out_channels=128,
-                kernel_size=4,
-                stride=2,
-                padding=1,
-                bias=False,
+                in_channels=256, out_channels=128, kernel_size=4, stride=2, padding=1, bias=False,
             ),
             nn.BatchNorm2d(128),
             nn.ReLU(),
+
             nn.ConvTranspose2d(
-                in_channels=128,
-                out_channels=64,
-                kernel_size=4,
-                stride=2,
-                padding=1,
-                bias=False,
+                in_channels=128, out_channels=64, kernel_size=4, stride=2, padding=1, bias=False,
             ),
             nn.ReLU(),
+
             nn.ConvTranspose2d(
-                in_channels=64,
-                out_channels=1,
-                kernel_size=4,
-                stride=2,
-                padding=3,
-                bias=False,
+                in_channels=64, out_channels=1, kernel_size=4, stride=2, padding=3, bias=False,
             ),
             nn.Tanh(),
         )
