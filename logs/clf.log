@@ -1,0 +1,6 @@
+2024-01-26 19:30:03,167 - INFO - Define the discriminator training function
+2024-01-26 19:30:03,167 - INFO - Define the generator training function
+2024-01-26 19:30:03,407 - ERROR - Please provide --download_mnist flag
+NoneType: None
+2024-01-26 19:30:03,407 - INFO - Generating samples
+2024-01-26 19:30:03,432 - INFO - Saving generated images
