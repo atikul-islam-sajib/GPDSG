@@ -12,34 +12,65 @@ logging.basicConfig(
 
 class Discriminator(nn.Module):
     """
-    A deep convolutional generative adversarial network (DCGAN) discriminator module.
+    Discriminator Class for Deep Convolutional Generative Adversarial Networks (DCGAN)
 
-    This class implements a discriminator as part of a DCGAN, using a series of convolutional layers to classify images as real or generated (fake). It is designed to be used in generative tasks alongside a generator to produce realistic images.
+    The Discriminator is a fundamental component of DCGAN, tasked with the classification of images as real or generated (fake). This module utilizes convolutional neural networks (CNNs) to distinguish between authentic and artificially generated images, playing a vital role in the adversarial learning process.
 
-    The architecture of the discriminator is as follows:
-    1. Convolutional Layer: Reduces the spatial dimension and increases the depth of feature maps from the input image.
-    2. LeakyReLU Activation: Allows for a small gradient when the unit is not active, preventing dying ReLU problem and helping the gradients to flow through the architecture.
-    3. Batch Normalization: Stabilizes learning by normalizing the input to each activation layer.
-    4. Further convolutions, leaky ReLUs, and batch normalizations: Continue to process the feature maps.
-    5. Fully Connected Layer: Flattens the output and maps it to a single value.
-    6. Sigmoid Activation: Outputs a probability indicating how likely the input image is real.
+    Classes:
+    --------
+    Discriminator(nn.Module):
+        Implements a discriminator network for DCGANs, composed of multiple layers of convolutional neural networks.
 
-    The discriminator takes a single-channel image (e.g., grayscale) as input and outputs a scalar probability between 0 (fake) and 1 (real).
+    Constructor:
+    ------------
+    __init__(self):
+        Initializes the Discriminator model with a pre-defined architecture.
 
-    Example usage:
-        # Initialize the discriminator
-        disc = Discriminator()
+    Methods:
+    -------
+    forward(self, x):
+        Conducts a forward pass through the discriminator network.
 
-        # Pass an image (real or generated) to the discriminator
-        probability_real = disc(real_image)
-        probability_fake = disc(generated_image)
+        Parameters:
+            x (torch.Tensor): Input tensor representing the image batch.
 
-    Note:
-    - The discriminator is crucial for the adversarial learning process, guiding the generator to produce more realistic images.
-    - The input size to the discriminator must match the output size of the generator.
-    - For RGB images, modify the input channel of the first layer to 3.
+        Returns:
+            torch.Tensor: Output tensor representing the probability of the input being real.
 
-    This implementation is based on the principles outlined in the DCGAN paper: "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks" by Radford et al.
+    Attributes:
+    -----------
+    model (torch.nn.Sequential):
+        The sequential model constituting the discriminator's architecture.
+
+    out (torch.nn.Sequential):
+        Final layers of the model that flatten the output and apply sigmoid activation.
+
+    Architecture:
+    -------------
+    1. Convolutional Layers:
+    - Extract and downsample features from the input image.
+    2. LeakyReLU Activation:
+    - Introduces non-linearity and mitigates the dying ReLU problem.
+    3. Batch Normalization:
+    - Normalizes the input to each layer, enhancing model stability.
+    4. Fully Connected Layer & Sigmoid Activation:
+    - Flattens the output and transforms it to a probability score.
+
+    Script Usage:
+    -------------
+    The script can be executed from the command line, allowing users to initialize the Discriminator model and report its total parameter count.
+
+    Command-Line Arguments:
+    -----------------------
+    --discriminator:
+        Flag to initialize and evaluate the Discriminator model.
+
+    Example:
+    --------
+    Command to run the script:
+
+        python discriminator_script.py --discriminator
+
     """
 
     def __init__(self):

@@ -12,62 +12,114 @@ logging.basicConfig(
 
 class Generator(nn.Module):
     """
-    A deep convolutional generative adversarial network (DCGAN) generator module.
+    Deep Convolutional Generative Adversarial Network (DCGAN) Generator Module.
 
-    This class implements a generator as part of a DCGAN, using a series of transposed convolutional layers to generate images from random noise. It is designed to be used in generative tasks where the goal is to produce realistic images.
+    This module contains the `Generator` class, which is a key component of a DCGAN,
+    designed to generate images from random noise using transposed convolutional layers.
+    The script provides a command-line interface to initialize the Generator model
+    with customizable parameters and to report the total number of parameters in the model.
 
-    Parameters:
-    - latent_space (int): Dimensionality of the latent space (random noise vector). Default is 100.
+    Classes:
+        Generator: Implements a generator for DCGAN with customizable latent space size.
 
-    The architecture of the generator is as follows:
-    1. Transposed Convolutional Layer: Expands the input latent vector into a small feature map.
-    2. Batch Normalization: Stabilizes learning by normalizing the input to each activation layer.
-    3. ReLU Activation: Introduces non-linearity, allowing the model to generate complex patterns.
-    4. Further transposed convolutions, batch normalizations, and ReLU activations: Continue to upscale the feature map to the desired output size.
-    5. Tanh Activation: Scales the output to a range of [-1, 1], typical for image data.
+    Functions:
+        __init__(self, latent_space=100): Initializes the Generator model.
+        forward(self, x): Defines the forward pass of the model.
 
-    The final output is a single-channel image of the same height and width as the kernel in the last transposed convolutional layer. The output size and quality depend on the parameters of each layer and the complexity of the latent space.
+    Command-Line Arguments:
+        --latent_space (int): Sets the size of the latent space. Default is 100.
+        --generator (flag): Triggers the initialization of the Generator model.
 
-    Example usage:
-        # Initialize the generator
-        gen = Generator(latent_space=100)
+    Example:
+        To initialize a Generator with a latent space of 100 and report its parameter count:
+        ```
+        python generator_script.py --latent_space 100 --generator
+        ```
 
-        # Generate a random noise vector
-        noise = torch.randn((1, 100, 1, 1))
+    Class `Generator`:
+    ------------------
+        The Generator class is responsible for creating a deep learning model capable of
+        generating images from a latent noise vector.
 
-        # Generate an image
-        fake_image = gen(noise)
+        Methods:
+            __init__(self, latent_space=100):
+                Constructs the Generator model.
+                Parameters:
+                    latent_space (int): The dimensionality of the input latent vector.
 
-    Note:
-    - This implementation assumes a single-channel output (e.g., grayscale images). For generating RGB images, modify the output channel of the last layer to 3.
-    - The quality of generated images heavily depends on the training process and the complexity of the model.
+            forward(self, x):
+                Performs the forward pass of the model.
+                Parameters:
+                    x (torch.Tensor): A tensor of the latent noise vector.
+                Returns:
+                    torch.Tensor: The generated image.
 
-    For more information on DCGANs, refer to the original paper: "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks" by Radford et al.
+    Script Usage:
+    -------------
+        This script, when run from the command line, allows for the initialization of the
+        Generator model with a specified latent space size. It also calculates and prints
+        the total number of parameters in the model.
+
+        Example:
+            Run the script with the following command to initialize the model and
+            print the parameter count:
+            ```
+            python generator_script.py --latent_space 100 --generator
+            ```
+
+    Notes:
+        - The model architecture includes several transposed convolutional layers,
+          batch normalization, and ReLU activations, ending with a Tanh activation.
+        - This implementation is optimized for single-channel image output.
+        - The quality and characteristics of the generated images depend on the model's training.
+
+    References:
+        - "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+          by Radford et al. for foundational concepts in DCGANs.
     """
+
+    # Your class and script code follows here...
 
     def __init__(self, latent_space=100):
         super(Generator, self).__init__()
         self.latent_space = latent_space
         self.model = nn.Sequential(
             nn.ConvTranspose2d(
-                in_channels=self.latent_space, out_channels=256, kernel_size=4, stride=1, padding=0, bias=False,
+                in_channels=self.latent_space,
+                out_channels=256,
+                kernel_size=4,
+                stride=1,
+                padding=0,
+                bias=False,
             ),
             nn.BatchNorm2d(256),
             nn.ReLU(),
-
             nn.ConvTranspose2d(
-                in_channels=256, out_channels=128, kernel_size=4, stride=2, padding=1, bias=False,
+                in_channels=256,
+                out_channels=128,
+                kernel_size=4,
+                stride=2,
+                padding=1,
+                bias=False,
             ),
             nn.BatchNorm2d(128),
             nn.ReLU(),
-
             nn.ConvTranspose2d(
-                in_channels=128, out_channels=64, kernel_size=4, stride=2, padding=1, bias=False,
+                in_channels=128,
+                out_channels=64,
+                kernel_size=4,
+                stride=2,
+                padding=1,
+                bias=False,
             ),
             nn.ReLU(),
-
             nn.ConvTranspose2d(
-                in_channels=64, out_channels=1, kernel_size=4, stride=2, padding=3, bias=False,
+                in_channels=64,
+                out_channels=1,
+                kernel_size=4,
+                stride=2,
+                padding=3,
+                bias=False,
             ),
             nn.Tanh(),
         )

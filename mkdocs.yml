@@ -1,0 +1,14 @@
+site_name: GPDSG
+
+nav:
+  - Home: index.md
+  - DataLoader: data_loader.md
+  - Discriminator: discriminator.md
+  - Generator: generator.md
+  - Trainer: train.md
+  - Testing: test.md
+  - Command Line: clf.md
+
+theme: readthedocs
+plugins:
+  - mkdocstrings

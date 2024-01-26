@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Command Line - GPDSG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Command Line";
+        var mkdocs_page_input_path = "clf.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> GPDSG
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../data_loader/">DataLoader</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../discriminator/">Discriminator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../generator/">Generator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../train/">Trainer</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../test/">Testing</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Command Line</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">GPDSG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Command Line</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="doc doc-object doc-module">
+
+
+
+<a id="clf"></a>
+  <div class="doc doc-contents first">
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="clf.clf_code" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">clf_code</span><span class="p">()</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Facilitates the configuration and initiation of the training process for a Generative Adversarial Network (GAN) using command-line arguments.</p>
+<p>This function uses the argparse library to parse command-line arguments that specify training parameters and controls, such as batch size, learning rate, number of epochs, latent space dimension, and a flag to download the MNIST dataset.</p>
+<p>The MNIST dataset, a collection of handwritten digits, is a standard benchmark in machine learning for image processing tasks. The function sets up a DataLoader for this dataset and initializes a Trainer class to train the GAN.</p>
+<p>Command-Line Arguments:
+- --batch_size (int): Batch size for the DataLoader. Default is 64.
+- --download_mnist (flag): Triggers the download of the MNIST dataset.
+- --lr (float): Learning rate for the GAN's training process. Default is 0.0002.
+- --epochs (int): Number of epochs for training the GAN. Default is 100.
+- --latent_space (int): Dimensionality of the latent space for the GAN's generator. Default is 100.</p>
+<p>Usage:
+Execute the script with the required arguments to initiate the GAN training process. For example:
+    python script.py --batch_size 64 --download_mnist --lr 0.0002 --epochs 100 --latent_space 100</p>
+<p>Functionality:
+- Parses and validates command-line arguments.
+- Downloads and prepares the MNIST dataset for training.
+- Initializes and starts the GAN training using the specified parameters.
+- Logs the process and any errors or exceptions encountered.</p>
+<p>Note:
+- The script assumes the presence of 'Loader' and 'Trainer' classes in the '../GPSG/src' directory.
+- Logging is configured to capture the flow and any issues, outputting to a file './logs/clf.log'.
+- This function is intended to be the main entry point of a Python script designed for GAN training.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>clf.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">clf_code</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Facilitates the configuration and initiation of the training process for a Generative Adversarial Network (GAN) using command-line arguments.</span>
+
+<span class="sd">    This function uses the argparse library to parse command-line arguments that specify training parameters and controls, such as batch size, learning rate, number of epochs, latent space dimension, and a flag to download the MNIST dataset.</span>
+
+<span class="sd">    The MNIST dataset, a collection of handwritten digits, is a standard benchmark in machine learning for image processing tasks. The function sets up a DataLoader for this dataset and initializes a Trainer class to train the GAN.</span>
+
+<span class="sd">    Command-Line Arguments:</span>
+<span class="sd">    - --batch_size (int): Batch size for the DataLoader. Default is 64.</span>
+<span class="sd">    - --download_mnist (flag): Triggers the download of the MNIST dataset.</span>
+<span class="sd">    - --lr (float): Learning rate for the GAN&#39;s training process. Default is 0.0002.</span>
+<span class="sd">    - --epochs (int): Number of epochs for training the GAN. Default is 100.</span>
+<span class="sd">    - --latent_space (int): Dimensionality of the latent space for the GAN&#39;s generator. Default is 100.</span>
+
+<span class="sd">    Usage:</span>
+<span class="sd">    Execute the script with the required arguments to initiate the GAN training process. For example:</span>
+<span class="sd">        python script.py --batch_size 64 --download_mnist --lr 0.0002 --epochs 100 --latent_space 100</span>
+
+<span class="sd">    Functionality:</span>
+<span class="sd">    - Parses and validates command-line arguments.</span>
+<span class="sd">    - Downloads and prepares the MNIST dataset for training.</span>
+<span class="sd">    - Initializes and starts the GAN training using the specified parameters.</span>
+<span class="sd">    - Logs the process and any errors or exceptions encountered.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">    - The script assumes the presence of &#39;Loader&#39; and &#39;Trainer&#39; classes in the &#39;../GPSG/src&#39; directory.</span>
+<span class="sd">    - Logging is configured to capture the flow and any issues, outputting to a file &#39;./logs/clf.log&#39;.</span>
+<span class="sd">    - This function is intended to be the main entry point of a Python script designed for GAN training.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Command line coding&quot;</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--batch_size&quot;</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Batch size for dataloader&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--download_mnist&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Download MNIST dataset&quot;</span>
+    <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--lr&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Learning rate&quot;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--epochs&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Epochs&quot;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--latent_space&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Latent space&quot;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--generate&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Create the Generated data&quot;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span>
+    <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--num_samples&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of samples to generate&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">download_mnist</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">batch_size</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">lr</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">epochs</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">latent_space</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Downloading MNIST dataset&quot;</span><span class="p">)</span>
+
+            <span class="n">loader</span> <span class="o">=</span> <span class="n">Loader</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+            <span class="n">loader</span><span class="o">.</span><span class="n">create_dataloader</span><span class="p">(</span><span class="n">loader</span><span class="o">.</span><span class="n">download_mnist_digit</span><span class="p">())</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Start training&quot;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+            <span class="n">trainer</span> <span class="o">=</span> <span class="n">Trainer</span><span class="p">(</span>
+                <span class="n">lr</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">lr</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">epochs</span><span class="p">,</span> <span class="n">latent_space</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">latent_space</span>
+            <span class="p">)</span>
+            <span class="n">trainer</span><span class="o">.</span><span class="n">train_simple_gan</span><span class="p">()</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Training complete&quot;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Please provide all the required arguments&quot;</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Please provide --download_mnist flag&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">generate</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">num_samples</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating samples&quot;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+            <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">num_samples</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">generator</span> <span class="o">=</span> <span class="n">get_the_best_model</span><span class="p">()</span>
+            <span class="n">generated_images</span> <span class="o">=</span> <span class="n">generator</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>
+            <span class="n">images</span> <span class="o">=</span> <span class="n">generated_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+            <span class="n">num_cols</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">num_rows</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">num_cols</span><span class="p">))</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Saving generated images&quot;</span><span class="p">)</span>
+            <span class="n">plot_images</span><span class="p">(</span><span class="n">images</span><span class="o">=</span><span class="n">images</span><span class="p">,</span> <span class="n">num_rows</span><span class="o">=</span><span class="n">num_rows</span><span class="p">,</span> <span class="n">num_cols</span><span class="o">=</span><span class="n">num_cols</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="clf.get_the_best_model" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">get_the_best_model</span><span class="p">()</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Loads and returns the latest trained generator model from a specified directory of checkpoints.</p>
+<p>This function identifies the latest model checkpoint based on the naming convention and the number of
+files in the './models/checkpoints/' directory. It assumes that the checkpoints are saved in the format
+'generator_{model_number}.pth', where '{model_number}' is an incrementing integer. The function loads
+the state dictionary of the latest generator model into a new Generator instance and sets it to
+evaluation mode.</p>
+<p>Returns:
+- generator (Generator): An instance of the Generator class with loaded weights from the latest checkpoint.</p>
+<p>Note:
+- The function requires the 'Generator' class to be defined and accessible within its scope.
+- The directory path './models/checkpoints/' is hardcoded and should contain the saved model checkpoints.
+- PyTorch's 'torch.load' method is used to load the state dictionary from the checkpoint file.
+- The function assumes that the latest model is the best model. If a different model selection strategy
+is required (like based on validation performance), the function needs to be modified accordingly.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>clf.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_the_best_model</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads and returns the latest trained generator model from a specified directory of checkpoints.</span>
+
+<span class="sd">    This function identifies the latest model checkpoint based on the naming convention and the number of</span>
+<span class="sd">    files in the &#39;./models/checkpoints/&#39; directory. It assumes that the checkpoints are saved in the format</span>
+<span class="sd">    &#39;generator_{model_number}.pth&#39;, where &#39;{model_number}&#39; is an incrementing integer. The function loads</span>
+<span class="sd">    the state dictionary of the latest generator model into a new Generator instance and sets it to</span>
+<span class="sd">    evaluation mode.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    - generator (Generator): An instance of the Generator class with loaded weights from the latest checkpoint.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">    - The function requires the &#39;Generator&#39; class to be defined and accessible within its scope.</span>
+<span class="sd">    - The directory path &#39;./models/checkpoints/&#39; is hardcoded and should contain the saved model checkpoints.</span>
+<span class="sd">    - PyTorch&#39;s &#39;torch.load&#39; method is used to load the state dictionary from the checkpoint file.</span>
+<span class="sd">    - The function assumes that the latest model is the best model. If a different model selection strategy</span>
+<span class="sd">    is required (like based on validation performance), the function needs to be modified accordingly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">best_model_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;./models/checkpoints/&quot;</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">generator</span> <span class="o">=</span> <span class="n">Generator</span><span class="p">()</span>
+
+    <span class="n">state_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+        <span class="s2">&quot;./models/checkpoints//generator_</span><span class="si">{}</span><span class="s2">.pth&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">best_model_num</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">generator</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">)</span>
+    <span class="n">generator</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">generator</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="clf.plot_images" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">plot_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Plots a grid of images using Matplotlib.</p>
+<p>This function takes a list of image tensors and displays them in a specified grid format. Each image is
+plotted in a subplot without axes. The function is designed to handle image tensors directly from a
+PyTorch model's output.</p>
+<p>Parameters:
+- images (list of torch.Tensor): A list of image tensors to be plotted.
+- num_rows (int): The number of rows in the grid.
+- num_cols (int): The number of columns in the grid.</p>
+<p>The images are assumed to be in a format compatible with Matplotlib's imshow function (e.g., numpy arrays).
+If the images are PyTorch tensors, they are converted to numpy arrays and detached from the current
+computation graph. This function is useful for visualizing the outputs of a generative model.</p>
+<p>Note:
+- The function requires Matplotlib for plotting.
+- The images should be in a format that can be directly used by 'plt.imshow' (like numpy arrays). If the images
+  are tensors, they are converted within the function.
+- The figsize is set to (64, 6), which might need to be adjusted depending on the resolution and number of images.</p>
+
+          <details class="quote">
+            <summary>Source code in <code>clf.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">plot_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plots a grid of images using Matplotlib.</span>
+
+<span class="sd">    This function takes a list of image tensors and displays them in a specified grid format. Each image is</span>
+<span class="sd">    plotted in a subplot without axes. The function is designed to handle image tensors directly from a</span>
+<span class="sd">    PyTorch model&#39;s output.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    - images (list of torch.Tensor): A list of image tensors to be plotted.</span>
+<span class="sd">    - num_rows (int): The number of rows in the grid.</span>
+<span class="sd">    - num_cols (int): The number of columns in the grid.</span>
+
+<span class="sd">    The images are assumed to be in a format compatible with Matplotlib&#39;s imshow function (e.g., numpy arrays).</span>
+<span class="sd">    If the images are PyTorch tensors, they are converted to numpy arrays and detached from the current</span>
+<span class="sd">    computation graph. This function is useful for visualizing the outputs of a generative model.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">    - The function requires Matplotlib for plotting.</span>
+<span class="sd">    - The images should be in a format that can be directly used by &#39;plt.imshow&#39; (like numpy arrays). If the images</span>
+<span class="sd">      are tensors, they are converted within the function.</span>
+<span class="sd">    - The figsize is set to (64, 6), which might need to be adjusted depending on the resolution and number of images.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">image</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">images</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">num_rows</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./outputs/generated_image_clf.png&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../test/" class="btn btn-neutral float-left" title="Testing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../test/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

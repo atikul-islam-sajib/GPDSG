@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>DataLoader - GPDSG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "DataLoader";
+        var mkdocs_page_input_path = "data_loader.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> GPDSG
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">DataLoader</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../discriminator/">Discriminator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../generator/">Generator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../train/">Trainer</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../test/">Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../clf/">Command Line</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">GPDSG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">DataLoader</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="doc doc-object doc-module">
+
+
+
+<a id="data_loader"></a>
+  <div class="doc doc-contents first">
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="data_loader.Loader" class="doc doc-heading">
+          <code>Loader</code>
+
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+
+  
+      <p>This script is designed to handle the downloading and loading of the MNIST dataset for training machine learning models. It utilizes PyTorch's torchvision datasets and DataLoader functionalities to facilitate easy and efficient data handling. The script includes command-line arguments for flexibility in usage.</p>
+
+
+
+  <p><strong>Classes:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code><span title="data_loader.Loader.Loader">Loader</span></code></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Handles the downloading of the MNIST dataset and creation of a DataLoader.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Methods:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+          <tr>
+            <td><code><span title="data_loader.Loader.download_mnist_digit">download_mnist_digit</span></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Downloads the MNIST dataset and returns the dataset object.</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><code><span title="data_loader.Loader.create_dataloader">create_dataloader</span></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Creates a DataLoader from the provided MNIST dataset.</p>
+              </div>
+            </td>
+          </tr>
+    </tbody>
+  </table>
+
+<details class="command-line-arguments" open>
+  <summary>Command-Line Arguments</summary>
+  <p>--batch_size (int): Specifies the batch size for the DataLoader. Default is 64.
+--download_mnist (flag): Triggers the download of the MNIST dataset.</p>
+</details>
+<details class="usage" open>
+  <summary>Usage</summary>
+  <p>Run the script with desired arguments. For example:
+<code>python data_loader_script.py --batch_size 64 --download_mnist</code>
+This command will download the MNIST dataset and create a DataLoader with a batch size of 64.</p>
+</details>
+<details class="example" open>
+  <summary>Example</summary>
+  <blockquote>
+<blockquote>
+<blockquote>
+<p>loader = Loader(batch_size=64)
+mnist_data = loader.download_mnist_digit()
+loader.create_dataloader(mnist_digit_data=mnist_data)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</details>
+<details class="logging" open>
+  <summary>Logging</summary>
+  <p>The script logs its progress and any errors encountered to <code>./logs/data_loader.log/</code>.</p>
+</details>
+<details class="notes" open>
+  <summary>Notes</summary>
+  <ul>
+<li>Ensure that the <code>torchvision</code> and <code>joblib</code> packages are installed.</li>
+<li>The script is intended for use with the MNIST dataset, a collection of handwritten digits commonly used in machine learning.</li>
+</ul>
+</details>      <p>For more detailed usage and information, please refer to the script's documentation in MkDocs.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>data_loader.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Loader</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This script is designed to handle the downloading and loading of the MNIST dataset for training machine learning models. It utilizes PyTorch&#39;s torchvision datasets and DataLoader functionalities to facilitate easy and efficient data handling. The script includes command-line arguments for flexibility in usage.</span>
+
+<span class="sd">    Classes:</span>
+<span class="sd">        Loader: Handles the downloading of the MNIST dataset and creation of a DataLoader.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        download_mnist_digit(): Downloads the MNIST dataset and returns the dataset object.</span>
+<span class="sd">        create_dataloader(mnist_digit_data): Creates a DataLoader from the provided MNIST dataset.</span>
+
+<span class="sd">    Command-Line Arguments:</span>
+<span class="sd">        --batch_size (int): Specifies the batch size for the DataLoader. Default is 64.</span>
+<span class="sd">        --download_mnist (flag): Triggers the download of the MNIST dataset.</span>
+
+<span class="sd">    Usage:</span>
+<span class="sd">        Run the script with desired arguments. For example:</span>
+<span class="sd">        `python data_loader_script.py --batch_size 64 --download_mnist`</span>
+<span class="sd">        This command will download the MNIST dataset and create a DataLoader with a batch size of 64.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; loader = Loader(batch_size=64)</span>
+<span class="sd">        &gt;&gt;&gt; mnist_data = loader.download_mnist_digit()</span>
+<span class="sd">        &gt;&gt;&gt; loader.create_dataloader(mnist_digit_data=mnist_data)</span>
+
+<span class="sd">    Logging:</span>
+<span class="sd">        The script logs its progress and any errors encountered to `./logs/data_loader.log/`.</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        - Ensure that the `torchvision` and `joblib` packages are installed.</span>
+<span class="sd">        - The script is intended for use with the MNIST dataset, a collection of handwritten digits commonly used in machine learning.</span>
+
+<span class="sd">    For more detailed usage and information, please refer to the script&#39;s documentation in MkDocs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+
+    <span class="k">def</span> <span class="nf">download_mnist_digit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Downloading MNIST dataset&quot;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+        <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,))]</span>
+        <span class="p">)</span>
+        <span class="n">mnist_data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
+            <span class="n">root</span><span class="o">=</span><span class="s2">&quot;./data/raw/&quot;</span><span class="p">,</span>
+            <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+            <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;MNIST dataset downloaded&quot;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">mnist_data</span>
+
+    <span class="k">def</span> <span class="nf">create_dataloader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mnist_digit_data</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Creating dataloader&quot;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+
+        <span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
+            <span class="n">mnist_digit_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Dataloader created&quot;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+            <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;./data/processed/dataloader.pkl&quot;</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error creating dataloader: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+  </div>
+
+  </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../discriminator/" class="btn btn-neutral float-right" title="Discriminator">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../discriminator/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

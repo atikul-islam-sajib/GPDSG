@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>GPDSG</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GPDSG
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="data_loader/">DataLoader</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="discriminator/">Discriminator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="generator/">Generator</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="train/">Trainer</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="test/">Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="clf/">Command Line</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GPDSG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="gpdsg-generative-adversarial-network-for-mnist-dataset-dcgan">GPDSG - Generative Adversarial Network for MNIST Dataset: DCGAN</h1>
+<h2 id="overview">Overview</h2>
+<p>GPDSG (GAN-based Project for Synthesizing Grayscale images) is a machine learning project focused on generating synthetic images using Generative Adversarial Networks (GANs). Specifically, it is designed to work with the MNIST dataset, a large database of handwritten digits commonly used for training various image processing systems.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Utilizes PyTorch for implementing GAN models.</li>
+<li>Provides scripts for easy training and generating synthetic images.</li>
+<li>Includes a custom data loader for the MNIST dataset.</li>
+<li>Customizable training parameters for experimenting with GAN.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Clone the repository:</p>
+<pre><code>git clone https://github.com/atikul-islam-sajib/GPDSG
+cd GPDSG
+</code></pre>
+<h1 id="install-dependencies">Install dependencies</h1>
+<pre><code>pip install -r requirements.txt
+</code></pre>
+<h2 id="core-script-usage">Core Script Usage</h2>
+<p>The core script sets up the necessary components for training the GAN. Here's a quick overview of what each part does:</p>
+<pre><code class="language-python">from src.data_loader import Loader
+from src.discriminator import Discriminator
+from src.generator import Generator
+from src.train import Trainer
+from src.test import test_DCGAN
+
+# Initialize the data loader with batch size
+loader = Loader(batch_size=64)
+loader.create_dataloader(mnist_data = loader.download_mnist_digit())
+
+# Set up the trainer with learning rate, epochs, and latent space size
+trainer = Trainer(lr = 0.0002, epochs = 10, latent_space = 100)
+trainer.train_simple_gan()
+
+# Test the generated dataset
+test_DCGAN()
+</code></pre>
+<p>This script initializes the data loader, downloads the MNIST dataset, and prepares the data loader. It then sets up and starts the training process for the GAN model.</p>
+<h2 id="training-and-generating-images">Training and Generating Images</h2>
+<h3 id="training-the-gan-model">Training the GAN Model</h3>
+<p>To train the GAN model with default parameters:</p>
+<pre><code>python /content/GPDSG/clf.py --batch_size 64 --lr 0.0002 --epochs 1 --latent_space 100 --download_mnist
+</code></pre>
+<h3 id="generating-images">Generating Images</h3>
+<p>To generate images using the trained model:</p>
+<pre><code>python /content/GPDSG/clf.py --num_samples 64 --generate
+</code></pre>
+<h3 id="viewing-generated-images">Viewing Generated Images</h3>
+<p>Check the specified output directory for the generated images.</p>
+<pre><code>from IPython.display import Image
+Image(filename='/content/GPDSG/outputs/generated_image.png')
+</code></pre>
+<h2 id="contributing">Contributing</h2>
+<p>Contributions to improve the project are welcome. Please follow the standard procedures for contributing to open-source projects.</p>
+<h2 id="license">License</h2>
+<p>This project is licensed under <a href="./LICENSE">MIT LICENSE</a>. Please see the LICENSE file for more details.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>Thanks to all contributors and users of the GPDSG project. Special thanks to those who have provided feedback and suggestions for improvements.</p>
+<h2 id="contact">Contact</h2>
+<p>For any inquiries or suggestions, feel free to reach out to [atikulislamsajib137@gmail.com].</p>
+<h2 id="additional-information">Additional Information</h2>
+<ul>
+<li>This project is a work in progress and subject to changes.</li>
+<li>Feedback and suggestions are highly appreciated.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="data_loader/" class="btn btn-neutral float-right" title="DataLoader">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="data_loader/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.5.3
+Build Date UTC : 2024-01-26 20:09:19.018131+00:00
+-->
