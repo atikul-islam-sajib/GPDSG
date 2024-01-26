@@ -67,7 +67,7 @@ Check the specified output directory for the generated images.
 
 ```
 from IPython.display import Image
-Image(filename='/content/GPDSG/outputs/generated_images/0.png')
+Image(filename='/content/GPDSG/outputs/generated_image.png')
 ```
 
 ## Documentation
