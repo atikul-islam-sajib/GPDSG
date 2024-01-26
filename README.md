@@ -36,7 +36,8 @@ The core script sets up the necessary components for training the GAN. Here's a 
 from src.data_loader import Loader
 from src.discriminator import Discriminator
 from src.generator import Generator
-from src.trainer import Trainer
+from src.train import Trainer
+from src.test import test_DCGAN
 
 # Initialize the data loader with batch size
 loader = Loader(batch_size=64)
