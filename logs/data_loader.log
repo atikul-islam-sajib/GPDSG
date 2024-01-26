@@ -1,0 +1,4 @@
+2024-01-26 17:55:44,502: Downloading mnist dataset
+2024-01-26 17:55:47,574: Mnist dataset downloaded
+2024-01-26 17:55:47,575: Creating dataloader
+2024-01-26 17:55:47,575: Dataloader created
