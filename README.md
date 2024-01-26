@@ -46,6 +46,9 @@ loader.create_dataloader(mnist_data = loader.download_mnist_digit())
 # Set up the trainer with learning rate, epochs, and latent space size
 trainer = Trainer(lr = 0.0002, epochs = 10, latent_space = 100)
 trainer.train_simple_gan()
+
+# Test the generated dataset
+test_DCGAN()
 ```
 
 This script initializes the data loader, downloads the MNIST dataset, and prepares the data loader. It then sets up and starts the training process for the GAN model.
