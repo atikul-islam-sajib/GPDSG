@@ -22,6 +22,12 @@ git clone https://github.com/atikul-islam-sajib/GPDSG
 cd GPDSG
 ```
 
+# Install dependencies
+
+```
+pip install -r requirements.txt
+```
+
 ## Core Script Usage
 
 The core script sets up the necessary components for training the GAN. Here's a quick overview of what each part does:
